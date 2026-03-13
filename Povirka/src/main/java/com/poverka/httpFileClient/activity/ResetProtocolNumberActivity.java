@@ -5,6 +5,7 @@ import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -111,7 +112,7 @@ public class ResetProtocolNumberActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reset_protocol_number);
         this.mHttpFileClient = new HttpFileClient(this.mHttpReceived);
-        this.mUiHandler = new UiHandler();
+        this.mUiHandler = new UiHandler(this);
         initViews();
     }
 
@@ -253,6 +254,7 @@ public class ResetProtocolNumberActivity extends AppCompatActivity {
         private ResetProtocolNumberActivity activity;
 
         private UiHandler(ResetProtocolNumberActivity activity) {
+            super(Looper.getMainLooper());
             this.activity = activity;
         }
 

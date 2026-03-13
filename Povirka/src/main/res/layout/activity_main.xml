@@ -1,110 +1,186 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main"
-    android:background="@drawable/logo_and_name"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg_dark_gradient"
     android:keepScreenOn="true">
+
     <androidx.constraintlayout.widget.Guideline
-        android:orientation="vertical"
         android:id="@+id/guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
         app:layout_constraintGuide_percent="0.5"/>
-    <ImageButton
-        android:id="@+id/buttonSettings"
-        android:background="@android:color/transparent"
-        android:padding="0dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:scaleType="fitXY"
-        android:onClick="SettingsClicked"
-        android:layout_marginEnd="15dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/settings6464"/>
-    <Button
-        android:textSize="27sp"
-        android:id="@+id/buttonMainStart"
-        android:layout_width="330dp"
-        android:layout_height="70dp"
-        android:layout_marginTop="20dp"
-        android:text="@string/main_button_start_local"
-        android:onClick="StartClicked"
-        android:textAllCaps="false"
-        android:layout_marginEnd="15dp"
-        app:layout_constraintEnd_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toTopOf="@+id/guideline2"/>
-    <Button
-        android:textSize="27sp"
-        android:id="@+id/buttonMainTasks"
-        android:layout_width="330dp"
-        android:layout_height="70dp"
-        android:layout_marginTop="20dp"
-        android:text="@string/main_button_tasks"
-        android:onClick="TasksClicked"
-        android:textAllCaps="false"
-        android:fontFamily="sans-serif-medium"
-        android:layout_marginStart="15dp"
-        app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toTopOf="@+id/guideline2"/>
-    <TextView
-        android:id="@+id/textDispatcher"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:text="@string/main_view_dispatcher"
-        android:layout_marginStart="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/textLoadedCity"
-        app:layout_constraintStart_toStartOf="parent"/>
-    <TextView
-        android:id="@+id/textLoadedCity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:text="@string/main_view_loaded_city"
-        android:layout_marginStart="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/textEnvironmentSettings"
-        app:layout_constraintStart_toStartOf="parent"/>
-    <TextView
-        android:id="@+id/textEnvironmentSettings"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
-        android:text="@string/main_view_environment_settings"
-        android:layout_marginStart="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
-    <TextView
-        android:id="@+id/textVersion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
-        android:layout_marginEnd="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+
     <androidx.constraintlayout.widget.Guideline
-        android:orientation="horizontal"
         android:id="@+id/guideline2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.5"/>
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="test"
-        android:onClick="TempButtonClicked"
-        android:layout_marginStart="15dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+
+    <!-- Settings button -->
+    <ImageButton
+        android:id="@+id/buttonSettings"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/btn_secondary"
+        android:contentDescription="@string/settings_button_support"
+        android:onClick="SettingsClicked"
+        android:padding="8dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/settings6464"/>
+
+    <!-- Station city text -->
     <TextView
         android:id="@+id/textStationCity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="15dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        android:textColor="@color/colorTextSecondary"
+        android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/buttonSettings"
         app:layout_constraintTop_toTopOf="parent"/>
+
+    <!-- Test button -->
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/btn_secondary"
+        android:onClick="TempButtonClicked"
+        android:paddingStart="16dp"
+        android:paddingTop="8dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="8dp"
+        android:text="test"
+        android:textAllCaps="false"
+        android:textColor="@color/colorTextSecondary"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <!-- Main action buttons card -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        app:cardBackgroundColor="@color/colorCardBackground"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/guideline2"
+        app:layout_constraintBottom_toBottomOf="@+id/guideline2">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="20dp">
+
+            <Button
+                android:id="@+id/buttonMainStart"
+                android:layout_width="0dp"
+                android:layout_height="64dp"
+                android:layout_weight="1"
+                android:layout_marginEnd="12dp"
+                android:background="@drawable/btn_primary"
+                android:fontFamily="@font/nunito"
+                android:onClick="StartClicked"
+                android:text="@string/main_button_start_local"
+                android:textAllCaps="false"
+                android:textColor="@color/colorOnAccent"
+                android:textSize="18sp"/>
+
+            <Button
+                android:id="@+id/buttonMainTasks"
+                android:layout_width="0dp"
+                android:layout_height="64dp"
+                android:layout_weight="1"
+                android:layout_marginStart="12dp"
+                android:background="@drawable/btn_secondary"
+                android:fontFamily="@font/nunito"
+                android:onClick="TasksClicked"
+                android:text="@string/main_button_tasks"
+                android:textAllCaps="false"
+                android:textColor="@color/colorTextPrimary"
+                android:textSize="18sp"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Bottom info card -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="16dp"
+        app:cardBackgroundColor="@color/colorCardBackground"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="16dp"
+            android:paddingTop="12dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="12dp">
+
+            <TextView
+                android:id="@+id/textDispatcher"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nunito"
+                android:text="@string/main_view_dispatcher"
+                android:textColor="@color/colorTextSecondary"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:id="@+id/textLoadedCity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nunito"
+                android:text="@string/main_view_loaded_city"
+                android:textColor="@color/colorTextSecondary"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:id="@+id/textEnvironmentSettings"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nunito"
+                android:text="@string/main_view_environment_settings"
+                android:textColor="@color/colorTextSecondary"
+                android:textSize="14sp"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Version text -->
+    <TextView
+        android:id="@+id/textVersion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:fontFamily="@font/nunito"
+        android:textColor="@color/colorTextSecondary"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
