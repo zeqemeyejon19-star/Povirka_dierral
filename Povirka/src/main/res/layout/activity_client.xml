@@ -4,7 +4,8 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:keepScreenOn="true">
+    android:keepScreenOn="true"
+    android:background="@drawable/bg_dark_gradient">
     <ScrollView
         android:id="@+id/scrollSettings"
         android:layout_width="match_parent"
@@ -33,7 +34,8 @@
                     android:layout_marginStart="10dp"
                     app:layout_constraintBottom_toBottomOf="@+id/editIdNumber"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/editIdNumber"/>
+                    app:layout_constraintTop_toTopOf="@+id/editIdNumber"
+                    android:textColor="@color/colorTextPrimary"/>
                 <EditText
                     android:textSize="15sp"
                     android:id="@+id/editIdNumber"
@@ -57,7 +59,8 @@
                     android:layout_marginStart="10dp"
                     app:layout_constraintBottom_toBottomOf="@+id/editPaymentAccount"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/editPaymentAccount"/>
+                    app:layout_constraintTop_toTopOf="@+id/editPaymentAccount"
+                    android:textColor="@color/colorTextPrimary"/>
                 <TextView
                     android:textSize="20sp"
                     android:textColor="@android:color/black"
@@ -91,7 +94,8 @@
                     android:layout_marginStart="10dp"
                     app:layout_constraintBottom_toBottomOf="@+id/editPersonalAccount"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/editPersonalAccount"/>
+                    app:layout_constraintTop_toTopOf="@+id/editPersonalAccount"
+                    android:textColor="@color/colorTextPrimary"/>
                 <EditText
                     android:textSize="15sp"
                     android:id="@+id/editPersonalAccount"
@@ -115,7 +119,8 @@
                     android:layout_marginStart="10dp"
                     app:layout_constraintBottom_toBottomOf="@+id/editSeal"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/editSeal"/>
+                    app:layout_constraintTop_toTopOf="@+id/editSeal"
+                    android:textColor="@color/colorTextPrimary"/>
                 <EditText
                     android:textSize="15sp"
                     android:id="@+id/editSeal"
@@ -138,7 +143,8 @@
                     android:layout_marginStart="10dp"
                     app:layout_constraintBottom_toBottomOf="@+id/spinnerServiceType"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/spinnerServiceType"/>
+                    app:layout_constraintTop_toTopOf="@+id/spinnerServiceType"
+                    android:textColor="@color/colorTextPrimary"/>
                 <Spinner
                     android:textSize="15sp"
                     android:entries="@array/ServiceType_array"
@@ -160,7 +166,8 @@
                     android:layout_marginStart="10dp"
                     app:layout_constraintBottom_toBottomOf="@+id/editNote"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/editNote"/>
+                    app:layout_constraintTop_toTopOf="@+id/editNote"
+                    android:textColor="@color/colorTextPrimary"/>
                 <EditText
                     android:textSize="15sp"
                     android:id="@+id/editNote"
@@ -178,6 +185,9 @@
                     android:id="@+id/buttonShowMore"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:background="@drawable/btn_secondary"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorTextPrimary"
                     android:text="@string/show_more"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -191,7 +201,8 @@
                     android:text="@string/client_protocol_number"
                     android:layout_marginStart="10dp"
                     app:layout_constraintBottom_toBottomOf="@+id/editProtocolNumber"
-                    app:layout_constraintStart_toStartOf="parent"/>
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:textColor="@color/colorTextPrimary"/>
                 <EditText
                     android:textSize="15sp"
                     android:id="@+id/editProtocolNumber"
@@ -227,7 +238,8 @@
                     android:text="@string/client_date_time"
                     android:layout_marginStart="10dp"
                     app:layout_constraintBottom_toBottomOf="@+id/editDateTime"
-                    app:layout_constraintStart_toStartOf="parent"/>
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:textColor="@color/colorTextPrimary"/>
                 <EditText
                     android:textSize="15sp"
                     android:id="@+id/editDateTime"
@@ -250,7 +262,8 @@
                     android:text="@string/client_counter_number"
                     android:layout_marginStart="10dp"
                     app:layout_constraintBottom_toBottomOf="@+id/editCounterNumber"
-                    app:layout_constraintStart_toStartOf="parent"/>
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:textColor="@color/colorTextPrimary"/>
                 <EditText
                     android:textSize="15sp"
                     android:id="@+id/editCounterNumber"
@@ -273,7 +286,8 @@
                     android:text="@string/client_surname"
                     android:layout_marginStart="10dp"
                     app:layout_constraintBottom_toBottomOf="@+id/editSurname"
-                    app:layout_constraintStart_toStartOf="parent"/>
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:textColor="@color/colorTextPrimary"/>
                 <EditText
                     android:textSize="15sp"
                     android:id="@+id/editSurname"
@@ -296,7 +310,8 @@
                     android:text="@string/client_city"
                     android:layout_marginStart="10dp"
                     app:layout_constraintBottom_toBottomOf="@+id/layoutCity"
-                    app:layout_constraintStart_toStartOf="parent"/>
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:textColor="@color/colorTextPrimary"/>
                 <LinearLayout
                     android:gravity="center"
                     android:orientation="vertical"
@@ -330,7 +345,8 @@
                     android:text="@string/client_street"
                     android:layout_marginStart="10dp"
                     app:layout_constraintBottom_toBottomOf="@+id/layoutStreet"
-                    app:layout_constraintStart_toStartOf="parent"/>
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:textColor="@color/colorTextPrimary"/>
                 <LinearLayout
                     android:gravity="center"
                     android:orientation="vertical"
@@ -364,7 +380,8 @@
                     android:text="@string/client_building"
                     android:layout_marginStart="10dp"
                     app:layout_constraintBottom_toBottomOf="@+id/layoutBuilding"
-                    app:layout_constraintStart_toStartOf="parent"/>
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:textColor="@color/colorTextPrimary"/>
                 <LinearLayout
                     android:gravity="center"
                     android:orientation="horizontal"
@@ -418,7 +435,8 @@
                     android:text="@string/client_apartment"
                     android:layout_marginStart="10dp"
                     app:layout_constraintBottom_toBottomOf="@+id/layoutApartment"
-                    app:layout_constraintStart_toStartOf="parent"/>
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:textColor="@color/colorTextPrimary"/>
                 <LinearLayout
                     android:gravity="center"
                     android:orientation="horizontal"
@@ -461,7 +479,8 @@
                     android:text="@string/client_phone_number"
                     android:layout_marginStart="10dp"
                     app:layout_constraintBottom_toBottomOf="@+id/editPhone"
-                    app:layout_constraintStart_toStartOf="parent"/>
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:textColor="@color/colorTextPrimary"/>
                 <EditText
                     android:textSize="15sp"
                     android:id="@+id/editPhone"
@@ -513,7 +532,8 @@
                     android:text="@string/client_email"
                     android:layout_marginStart="10dp"
                     app:layout_constraintBottom_toBottomOf="@+id/editEmail"
-                    app:layout_constraintStart_toStartOf="parent"/>
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:textColor="@color/colorTextPrimary"/>
                 <EditText
                     android:textSize="15sp"
                     android:id="@+id/editEmail"
@@ -540,12 +560,18 @@
             android:id="@+id/buttonRepeat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+                    android:background="@drawable/btn_secondary"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorTextPrimary"
             android:text="@string/fill_client"/>
         <Button
             android:id="@+id/buttonSave"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10sp"
+                    android:background="@drawable/btn_secondary"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorTextPrimary"
             android:text="@string/image_button_save"
             android:layout_marginStart="20sp"/>
     </LinearLayout>

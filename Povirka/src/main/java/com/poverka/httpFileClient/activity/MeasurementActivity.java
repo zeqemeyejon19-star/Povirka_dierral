@@ -2,7 +2,6 @@ package com.poverka.httpFileClient.activity;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -11,9 +10,11 @@ import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.graphics.pdf.PdfDocument;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -28,8 +29,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.internal.view.SupportMenu;
-import androidx.core.view.ViewCompat;
+import androidx.core.content.ContextCompat;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -85,7 +85,7 @@ public class MeasurementActivity extends AppCompatActivity {
     private static final String TAG = "MeasurementActivity";
     private static final float TEXT_L_HEIGHT_RATIO = 0.07f;
     private static final float TEXT_S_HEIGHT_RATIO = 0.05f;
-    private static ProgressDialog mProgressDialog;
+    private static AlertDialog mProgressDialog;
     private static int progressDialogTimer;
     private MeasurementResults curMeasurementResult;
     private int finishTimer;
@@ -449,10 +449,9 @@ public class MeasurementActivity extends AppCompatActivity {
         setContentView(R.layout.activity_measurement);
         Log("*** Created ***");
         initViews();
-        mProgressDialog = new ProgressDialog(this);
         progressDialogTimer = 0;
         this.isRepeating = false;
-        this.mUIhandler = new UIhandler();
+        this.mUIhandler = new UIhandler(this);
         this.threadDelay = MainActivity.REQUEST_DELAY;
         this.finishTimer = 0;
         Intent intent = getIntent();
@@ -502,7 +501,7 @@ public class MeasurementActivity extends AppCompatActivity {
                 MeasurementActivity.this.stopActivity();
                 Intent intent2 = new Intent(MeasurementActivity.this.getApplicationContext(), (Class<?>) MainActivity.class);
                 intent2.addCategory("android.intent.category.HOME");
-                intent2.setFlags(67108864);
+                intent2.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 intent2.putExtra("EXIT", true);
                 MeasurementActivity.this.startActivity(intent2);
             }
@@ -824,39 +823,30 @@ public class MeasurementActivity extends AppCompatActivity {
     }
 
     public void RepeatClicked(View v) {
-        if (this.mVerification.getTotalReitNumber() < 3) {
-            int id = this.curMeasurementResult.getMeasurementNumber();
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setTitle(R.string.repeat_measurement_title);
-            builder.setMessage(String.format(Locale.ROOT, getString(R.string.sure_want_repeat), Integer.valueOf(id), Integer.valueOf(3 - this.mVerification.getTotalReitNumber())));
-            builder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() { // from class: com.poverka.httpFileClient.activity.MeasurementActivity.7
-                @Override // android.content.DialogInterface.OnClickListener
-                public void onClick(DialogInterface dialog, int which) {
-                    MeasurementActivity.this.setViewsClickable(false);
-                    MeasurementActivity measurementActivity = MeasurementActivity.this;
-                    measurementActivity.removePagesOfMeasurement(measurementActivity.curMeasurementResult.getMeasurementNumber());
-                    MeasurementActivity measurementActivity2 = MeasurementActivity.this;
-                    measurementActivity2.curMeasurementResult = measurementActivity2.mVerification.repeatMeasurement(MeasurementActivity.this.curMeasurementResult.getMeasurementNumber());
-                    MeasurementActivity.this.prepareViews();
-                    MeasurementActivity.this.mQueue.add(MyModeQueue.RequestMode.PREPARE_MEASUREMENT);
-                }
-            });
-            builder.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() { // from class: com.poverka.httpFileClient.activity.MeasurementActivity.8
-                @Override // android.content.DialogInterface.OnClickListener
-                public void onClick(DialogInterface dialog, int which) {
-                    dialog.dismiss();
-                }
-            });
-            AlertDialog stateDialog = builder.create();
-            stateDialog.show();
-            return;
-        }
-        Log.e(TAG, "can not repeat measurements more than 3 times");
-        Message msg = this.mUIhandler.obtainMessage(0);
-        Bundle bundle = new Bundle();
-        bundle.putString("alert", getString(R.string.repeat_limit_reached));
-        msg.setData(bundle);
-        this.mUIhandler.sendMessage(msg);
+        int id = this.curMeasurementResult.getMeasurementNumber();
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(R.string.repeat_measurement_title);
+        builder.setMessage(String.format(Locale.ROOT, getString(R.string.sure_want_repeat), Integer.valueOf(id)));
+        builder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() { // from class: com.poverka.httpFileClient.activity.MeasurementActivity.7
+            @Override // android.content.DialogInterface.OnClickListener
+            public void onClick(DialogInterface dialog, int which) {
+                MeasurementActivity.this.setViewsClickable(false);
+                MeasurementActivity measurementActivity = MeasurementActivity.this;
+                measurementActivity.removePagesOfMeasurement(measurementActivity.curMeasurementResult.getMeasurementNumber());
+                MeasurementActivity measurementActivity2 = MeasurementActivity.this;
+                measurementActivity2.curMeasurementResult = measurementActivity2.mVerification.repeatMeasurement(MeasurementActivity.this.curMeasurementResult.getMeasurementNumber());
+                MeasurementActivity.this.prepareViews();
+                MeasurementActivity.this.mQueue.add(MyModeQueue.RequestMode.PREPARE_MEASUREMENT);
+            }
+        });
+        builder.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() { // from class: com.poverka.httpFileClient.activity.MeasurementActivity.8
+            @Override // android.content.DialogInterface.OnClickListener
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        AlertDialog stateDialog = builder.create();
+        stateDialog.show();
     }
 
     public void NextClicked(View v) {
@@ -884,23 +874,15 @@ public class MeasurementActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Button buttonStart = (Button) MeasurementActivity.this.findViewById(R.id.buttonTestStart);
                 if (MeasurementActivity.this.requestMode.getValue() == MyModeQueue.RequestMode.NONE && buttonStart.getText().toString().contains(MeasurementActivity.this.getString(R.string.ready))) {
-                    if (MeasurementActivity.this.mVerification.getTotalReitNumber() < 3) {
-                        int id = v.getId();
-                        MeasurementActivity measurementActivity = MeasurementActivity.this;
-                        measurementActivity.curMeasurementResult = measurementActivity.mVerification.getMeasurement(id, MeasurementActivity.this.mVerification.getLastReitNumber(id));
-                        MeasurementActivity.this.RepeatClicked(null);
-                        return;
-                    }
-                    Log.e(MeasurementActivity.TAG, "can not repeat measurements more than 3 times");
-                    Message msg = MeasurementActivity.this.mUIhandler.obtainMessage(0);
-                    Bundle bundle = new Bundle();
-                    bundle.putString("alert", MeasurementActivity.this.getString(R.string.repeat_limit_reached));
-                    msg.setData(bundle);
-                    MeasurementActivity.this.mUIhandler.sendMessage(msg);
+                    int id = v.getId();
+                    MeasurementActivity measurementActivity = MeasurementActivity.this;
+                    measurementActivity.curMeasurementResult = measurementActivity.mVerification.getMeasurement(id, MeasurementActivity.this.mVerification.getLastReitNumber(id));
+                    MeasurementActivity.this.RepeatClicked(null);
                 }
             }
         });
     }
+
 
     /* JADX INFO: Access modifiers changed from: private */
     public void fabClicked() {
@@ -1027,7 +1009,7 @@ public class MeasurementActivity extends AppCompatActivity {
         stopActivity();
         Intent intent = new Intent(getApplicationContext(), (Class<?>) MainActivity.class);
         intent.addCategory("android.intent.category.HOME");
-        intent.setFlags(67108864);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         intent.putExtra("EXIT", true);
         startActivity(intent);
     }
@@ -1063,8 +1045,7 @@ public class MeasurementActivity extends AppCompatActivity {
         LinearLayout temperatureLayout = (LinearLayout) findViewById(R.id.temperature_layout);
         LinearLayout statusLayout = (LinearLayout) findViewById(R.id.status_layout);
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.floatingActionButton);
-        DisplayMetrics metrics = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(metrics);
+        DisplayMetrics metrics = getResources().getDisplayMetrics();
         int i = metrics.heightPixels;
         this.screenHeight = i;
         int buttonHeight = (int) (i * BUTTON_HEIGHT_RATIO);
@@ -1142,7 +1123,7 @@ public class MeasurementActivity extends AppCompatActivity {
         TextView view = new TextView(this);
         view.setLayoutParams(new LinearLayout.LayoutParams(-1, -1));
         view.setTextSize(0, textLHeight);
-        view.setTextColor(ViewCompat.MEASURED_STATE_MASK);
+        view.setTextColor(ContextCompat.getColor(this, R.color.colorTextPrimary));
         view.setShadowLayer(15.0f, 0.0f, 0.0f, -1);
         try {
             int i = AnonymousClass16.$SwitchMap$com$poverka$httpFileClient$activity$MeasurementActivity$Pages[page.ordinal()];
@@ -1281,19 +1262,19 @@ public class MeasurementActivity extends AppCompatActivity {
         TextView textTimeLeft = (TextView) findViewById(R.id.textTimeLeft);
         textTestName.setText(this.mVerification.testNameToText(getResources()));
         if (String.valueOf(this.mVerification.getTestName()).charAt(0) == '1') {
-            underline.setBackgroundColor(-16776961);
+            underline.setBackgroundColor(ContextCompat.getColor(this, R.color.colorAccentCold));
         } else {
-            underline.setBackgroundColor(SupportMenu.CATEGORY_MASK);
+            underline.setBackgroundColor(ContextCompat.getColor(this, R.color.colorAccentHot));
         }
         textTestSettings.setText(String.format(Locale.ROOT, "Q = %.3f %s \nV = %d л", Float.valueOf(this.curMeasurementResult.getRequiredConsumptionLit() / 1000.0f), getString(R.string.cubic_meters), Integer.valueOf(this.curMeasurementResult.getRequiredVolumeLit())));
         textLow.setText(String.format(Locale.ROOT, "%.3f", Float.valueOf(this.curMeasurementResult.getRequiredLowLimit() / 1000.0f)));
         textHigh.setText(String.format(Locale.ROOT, "%.3f", Float.valueOf(this.curMeasurementResult.getRequiredHighLimit() / 1000.0f)));
         textCurCon.setText(String.format(Locale.ROOT, "Qт %.3f", Float.valueOf(0.0f)));
-        textCurCon.setBackgroundColor(-1);
-        textCurCon.setTextColor(ViewCompat.MEASURED_STATE_MASK);
+        textCurCon.setBackgroundColor(ContextCompat.getColor(this, R.color.colorRangeNone));
+        textCurCon.setTextColor(ContextCompat.getColor(this, R.color.colorTextPrimary));
         textAverageCon.setText(String.format(Locale.ROOT, "Qс %.3f", Float.valueOf(0.0f)));
-        textAverageCon.setBackgroundColor(-1);
-        textAverageCon.setTextColor(ViewCompat.MEASURED_STATE_MASK);
+        textAverageCon.setBackgroundColor(ContextCompat.getColor(this, R.color.colorRangeNone));
+        textAverageCon.setTextColor(ContextCompat.getColor(this, R.color.colorTextPrimary));
         progress.setMax(this.curMeasurementResult.getRequiredVolumeImp());
         progress.setProgress(0);
         textTimeLeft.setText(String.format(Locale.ROOT, "%s с.", "-"));
@@ -1332,10 +1313,10 @@ public class MeasurementActivity extends AppCompatActivity {
         TextView v = (TextView) findViewById(10);
         if (temperatureOk) {
             v.setBackgroundResource(R.drawable.circle_green);
-            v.setTextColor(ViewCompat.MEASURED_STATE_MASK);
+            v.setTextColor(ContextCompat.getColor(this, R.color.colorOnAccent));
         } else {
             v.setBackgroundResource(R.drawable.circle_red);
-            v.setTextColor(-1);
+            v.setTextColor(ContextCompat.getColor(this, R.color.colorOnAccent));
         }
     }
 
@@ -1391,7 +1372,10 @@ public class MeasurementActivity extends AppCompatActivity {
     /* JADX INFO: Access modifiers changed from: private */
     public void changeToDoing(TextView v) {
         int textSize = (int) (this.screenHeight * 0.025f);
-        if (v.getBackground().getConstantState().equals(getResources().getDrawable(R.drawable.circle_light).getConstantState())) {
+        Drawable circleLightDrawable = ContextCompat.getDrawable(this, R.drawable.circle_light);
+        if (circleLightDrawable != null && circleLightDrawable.getConstantState() != null
+                && v.getBackground() != null && v.getBackground().getConstantState() != null
+                && v.getBackground().getConstantState().equals(circleLightDrawable.getConstantState())) {
             v.setBackgroundResource(R.drawable.circle_dark);
         } else {
             v.setBackgroundResource(R.drawable.circle_light);
@@ -1481,6 +1465,7 @@ public class MeasurementActivity extends AppCompatActivity {
         private MeasurementActivity activity;
 
         private UIhandler(MeasurementActivity activity) {
+            super(Looper.getMainLooper());
             this.activity = activity;
         }
 
@@ -1514,11 +1499,23 @@ public class MeasurementActivity extends AppCompatActivity {
                 case 2:
                     if (this.activity.mVerification.getAction() == 5) {
                         this.activity.setViewsClickable(false);
-                        if (!MeasurementActivity.mProgressDialog.isShowing() && MeasurementActivity.progressDialogTimer == 0) {
-                            MeasurementActivity.mProgressDialog.setMessage(this.activity.getString(R.string.measuring_temperature));
-                            MeasurementActivity.mProgressDialog.setIndeterminate(true);
-                            MeasurementActivity.mProgressDialog.setProgressStyle(0);
-                            MeasurementActivity.mProgressDialog.setCancelable(false);
+                        if ((MeasurementActivity.mProgressDialog == null || !MeasurementActivity.mProgressDialog.isShowing()) && MeasurementActivity.progressDialogTimer == 0) {
+                            LinearLayout progressLayout = new LinearLayout(this.activity);
+                            progressLayout.setOrientation(LinearLayout.HORIZONTAL);
+                            int pad = (int) (12 * this.activity.getResources().getDisplayMetrics().density);
+                            progressLayout.setPadding(pad, pad, pad, pad);
+                            ProgressBar progressSpinner = new ProgressBar(this.activity);
+                            progressSpinner.setIndeterminate(true);
+                            progressLayout.addView(progressSpinner);
+                            TextView progressMsg = new TextView(this.activity);
+                            progressMsg.setPadding(pad, 0, 0, 0);
+                            progressMsg.setText(this.activity.getString(R.string.measuring_temperature));
+                            progressMsg.setGravity(17);
+                            progressLayout.addView(progressMsg);
+                            AlertDialog.Builder progressBuilder = new AlertDialog.Builder(this.activity);
+                            progressBuilder.setView(progressLayout);
+                            progressBuilder.setCancelable(false);
+                            MeasurementActivity.mProgressDialog = progressBuilder.create();
                             MeasurementActivity.mProgressDialog.show();
                         } else {
                             MeasurementActivity.access$3108();
@@ -1550,30 +1547,32 @@ public class MeasurementActivity extends AppCompatActivity {
                     int currentConsumptionRange = this.activity.curMeasurementResult.curConRange();
                     int averageConsumptionRange = this.activity.curMeasurementResult.avrgConRange();
                     if (currentConsumptionRange == -1) {
-                        textCurCon.setBackgroundColor(-16776961);
-                        textCurCon.setTextColor(-1);
+                        textCurCon.setBackgroundColor(ContextCompat.getColor(this.activity, R.color.colorRangeLow));
+                        textCurCon.setTextColor(ContextCompat.getColor(this.activity, R.color.colorOnAccent));
                     } else if (currentConsumptionRange == 0) {
-                        textCurCon.setBackgroundColor(-16711936);
-                        textCurCon.setTextColor(ViewCompat.MEASURED_STATE_MASK);
+                        textCurCon.setBackgroundColor(ContextCompat.getColor(this.activity, R.color.colorRangeOk));
+                        textCurCon.setTextColor(ContextCompat.getColor(this.activity, R.color.colorOnAccent));
                     } else if (currentConsumptionRange == 1) {
-                        textCurCon.setBackgroundColor(SupportMenu.CATEGORY_MASK);
-                        textCurCon.setTextColor(-1);
+                        textCurCon.setBackgroundColor(ContextCompat.getColor(this.activity, R.color.colorRangeHigh));
+                        textCurCon.setTextColor(ContextCompat.getColor(this.activity, R.color.colorOnAccent));
                     }
                     if (averageConsumptionRange == -1) {
-                        textAverageCon.setBackgroundColor(-16776961);
-                        textAverageCon.setTextColor(-1);
+                        textAverageCon.setBackgroundColor(ContextCompat.getColor(this.activity, R.color.colorRangeLow));
+                        textAverageCon.setTextColor(ContextCompat.getColor(this.activity, R.color.colorOnAccent));
                     } else if (averageConsumptionRange == 0) {
-                        textAverageCon.setBackgroundColor(-16711936);
-                        textAverageCon.setTextColor(ViewCompat.MEASURED_STATE_MASK);
+                        textAverageCon.setBackgroundColor(ContextCompat.getColor(this.activity, R.color.colorRangeOk));
+                        textAverageCon.setTextColor(ContextCompat.getColor(this.activity, R.color.colorOnAccent));
                     } else if (averageConsumptionRange == 1) {
-                        textAverageCon.setBackgroundColor(SupportMenu.CATEGORY_MASK);
-                        textAverageCon.setTextColor(-1);
+                        textAverageCon.setBackgroundColor(ContextCompat.getColor(this.activity, R.color.colorRangeHigh));
+                        textAverageCon.setTextColor(ContextCompat.getColor(this.activity, R.color.colorOnAccent));
                     }
                     MeasurementActivity measurementActivity2 = this.activity;
                     measurementActivity2.changeToDoing((TextView) measurementActivity2.findViewById(measurementActivity2.curMeasurementResult.getMeasurementNumber()));
                     break;
                 case 3:
-                    MeasurementActivity.mProgressDialog.dismiss();
+                    if (MeasurementActivity.mProgressDialog != null && MeasurementActivity.mProgressDialog.isShowing()) {
+                        MeasurementActivity.mProgressDialog.dismiss();
+                    }
                     this.activity.setViewsClickable(true);
                     if (this.activity.isRepeating) {
                         buttonStart.setText(this.activity.getString(R.string.ready));
@@ -1644,7 +1643,7 @@ public class MeasurementActivity extends AppCompatActivity {
                     this.activity.stopActivity();
                     Intent intent = new Intent(this.activity.getApplicationContext(), (Class<?>) MainActivity.class);
                     intent.addCategory("android.intent.category.HOME");
-                    intent.setFlags(67108864);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     intent.putExtra("EXIT", true);
                     this.activity.startActivity(intent);
                     break;
@@ -1689,9 +1688,9 @@ public class MeasurementActivity extends AppCompatActivity {
                 case 8:
                     View underline = this.activity.findViewById(R.id.underline);
                     if (String.valueOf(this.activity.mVerification.getTestName()).charAt(0) == '1') {
-                        underline.setBackgroundColor(-16776961);
+                        underline.setBackgroundColor(ContextCompat.getColor(this.activity, R.color.colorAccentCold));
                     } else {
-                        underline.setBackgroundColor(SupportMenu.CATEGORY_MASK);
+                        underline.setBackgroundColor(ContextCompat.getColor(this.activity, R.color.colorAccentHot));
                     }
                     this.activity.updatePage(Pages.FIRST, 0, false);
                     for (int meas = 1; meas <= 2; meas++) {

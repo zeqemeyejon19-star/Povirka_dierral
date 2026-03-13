@@ -2,7 +2,8 @@
 <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@color/colorCardBackground">
     <TableRow
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -13,7 +14,8 @@
             android:layout_height="wrap_content"
             android:text="counter"
             android:height="45sp"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:textColor="@color/colorTextPrimary"/>
         <TextView
             android:textSize="18sp"
             android:id="@+id/address"
@@ -21,7 +23,8 @@
             android:layout_height="wrap_content"
             android:text="service"
             android:height="45sp"
-            android:layout_weight="3"/>
+            android:layout_weight="3"
+            android:textColor="@color/colorTextPrimary"/>
         <TextView
             android:textSize="18sp"
             android:id="@+id/name"
@@ -29,7 +32,8 @@
             android:layout_height="wrap_content"
             android:text="cancel"
             android:height="45sp"
-            android:layout_weight="3"/>
+            android:layout_weight="3"
+            android:textColor="@color/colorTextPrimary"/>
         <TextView
             android:textSize="18sp"
             android:id="@+id/count"
@@ -37,6 +41,7 @@
             android:layout_height="wrap_content"
             android:text="done"
             android:height="45sp"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:textColor="@color/colorTextPrimary"/>
     </TableRow>
 </TableLayout>

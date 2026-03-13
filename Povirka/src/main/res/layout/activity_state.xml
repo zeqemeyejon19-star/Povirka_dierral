@@ -1,98 +1,157 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg_dark_gradient"
     android:keepScreenOn="true">
+
     <androidx.constraintlayout.widget.Guideline
-        android:orientation="vertical"
         android:id="@+id/guideline3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintGuide_percent="0.6"/>
-    <LinearLayout
         android:orientation="vertical"
-        android:id="@+id/linearLayout"
+        app:layout_constraintGuide_percent="0.6"/>
+
+    <!-- Photo panel -->
+    <androidx.cardview.widget.CardView
         android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="10dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="12dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="6dp"
+        app:cardBackgroundColor="@color/colorCardBackground"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="6dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-        <ImageView
-            android:id="@+id/imageStateView"
-            android:clickable="true"
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scaleType="fitCenter"
-            android:onClick="ImageClicked"
-            android:contentDescription="@string/state_img_description"
-            app:srcCompat="@drawable/no_image"/>
-    </LinearLayout>
-    <LinearLayout
-        android:gravity="center"
-        android:orientation="vertical"
-        android:id="@+id/linearLayout2"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageStateView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clickable="true"
+                android:contentDescription="@string/state_img_description"
+                android:onClick="ImageClicked"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/no_image"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Controls panel -->
+    <androidx.cardview.widget.CardView
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="20dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="12dp"
+        android:layout_marginStart="6dp"
+        android:layout_marginEnd="12dp"
+        app:cardBackgroundColor="@color/colorCardBackground"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="6dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline3"
         app:layout_constraintTop_toTopOf="parent">
-        <androidx.constraintlayout.widget.ConstraintLayout
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp">
-            <TextView
-                android:textSize="25sp"
-                android:id="@+id/textFileName"
-                android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingStart="16dp"
+            android:paddingTop="16dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="16dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/state_view_file_name"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
-        </androidx.constraintlayout.widget.ConstraintLayout>
-        <TextView
-            android:textSize="25sp"
-            android:id="@+id/textTemperature"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:text="@string/state_view_temperature"/>
-        <Button
-            android:textSize="21sp"
-            android:id="@+id/buttonShowState"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:text="@string/state_button_show_state"
-            android:onClick="StateClicked"/>
-        <Button
-            android:textSize="21sp"
-            android:id="@+id/buttonRepeatPhoto"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:text="@string/state_button_repeat_photo"
-            android:onClick="PhotoClicked"/>
-        <Button
-            android:textSize="21sp"
-            android:id="@+id/buttonSelectTest"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:text="@string/state_button_select_test"
-            android:onClick="TestClicked"/>
-        <Button
-            android:textSize="21sp"
-            android:id="@+id/buttonStateStart"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:text="@string/state_button_start"
-            android:onClick="StartClicked"/>
-    </LinearLayout>
+                android:layout_marginBottom="8dp">
+
+                <TextView
+                    android:id="@+id/textFileName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nunito"
+                    android:text="@string/state_view_file_name"
+                    android:textColor="@color/colorTextPrimary"
+                    android:textSize="20sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/textTemperature"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:fontFamily="@font/nunito"
+                android:text="@string/state_view_temperature"
+                android:textColor="@color/colorTextSecondary"
+                android:textSize="18sp"/>
+
+            <Button
+                android:id="@+id/buttonShowState"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/btn_secondary"
+                android:fontFamily="@font/nunito"
+                android:onClick="StateClicked"
+                android:text="@string/state_button_show_state"
+                android:textAllCaps="false"
+                android:textColor="@color/colorTextPrimary"
+                android:textSize="18sp"/>
+
+            <Button
+                android:id="@+id/buttonRepeatPhoto"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/btn_secondary"
+                android:fontFamily="@font/nunito"
+                android:onClick="PhotoClicked"
+                android:text="@string/state_button_repeat_photo"
+                android:textAllCaps="false"
+                android:textColor="@color/colorTextPrimary"
+                android:textSize="18sp"/>
+
+            <Button
+                android:id="@+id/buttonSelectTest"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/btn_secondary"
+                android:fontFamily="@font/nunito"
+                android:onClick="TestClicked"
+                android:text="@string/state_button_select_test"
+                android:textAllCaps="false"
+                android:textColor="@color/colorTextPrimary"
+                android:textSize="18sp"/>
+
+            <Button
+                android:id="@+id/buttonStateStart"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:background="@drawable/btn_primary"
+                android:fontFamily="@font/nunito"
+                android:onClick="StartClicked"
+                android:text="@string/state_button_start"
+                android:textAllCaps="false"
+                android:textColor="@color/colorOnAccent"
+                android:textSize="18sp"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

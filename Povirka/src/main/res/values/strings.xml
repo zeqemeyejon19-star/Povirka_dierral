@@ -34,7 +34,7 @@
     <string name="alert_restart_station">Для застосування змін потрібно обов\'язково перезавантажити установку</string>
     <string name="alert_wrong_date" formatted="false">Дата установки не співпадає з датою планшету.\n\nДата установки: %s\nДата планшету: %s\n\nЯку дату використовувати?</string>
     <string name="all_tasks_are_done">Усі заявки виконано</string>
-    <string name="app_name">Poverka</string>
+    <string name="app_name">Повірка</string>
     <string name="appbar_scrolling_view_behavior">com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior</string>
     <string name="average_consumption_problem">Середня витрата виміру %s допустимо</string>
     <string name="battery_charge">Заряд батареї: %d%% \n</string>
@@ -381,7 +381,7 @@
     <string name="support_text_tel">Телефон сервісного центру: \n\n+380 50 500 3699</string>
     <string name="support_title">Оберіть, що вас цікавить</string>
     <string name="sure_want_finish_verification">Дійсно бажаєте завершити повірку?</string>
-    <string name="sure_want_repeat" formatted="false">Дійсно бажаєте повторити вимірювання №%d? \nПовторів лишилось: %d</string>
+    <string name="sure_want_repeat" formatted="false">Дійсно бажаєте повторити вимірювання №%d?</string>
     <string name="switch_camera">Камера Wi-Fi</string>
     <string name="switch_logging">Передача лог-файлів</string>
     <string name="tab_update">Оновлення ПЗ Poverka</string>
