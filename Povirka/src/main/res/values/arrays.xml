@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="Class_array">
+        <item>Клас А</item>
+        <item>Клас B</item>
+    </array>
+    <array name="MechanismType_array">
+        <item>Стрілочний</item>
+        <item>Барабанний</item>
+    </array>
+    <array name="Q3_array">
+        <item>4.0</item>
+        <item>2.5</item>
+        <item>1.6</item>
+        <item>1.0</item>
+    </array>
+    <array name="Q_array">
+        <item>Qn</item>
+        <item>Q3</item>
+    </array>
+    <array name="Q_calibration_array">
+        <item>0,01</item>
+        <item>0,03</item>
+        <item>0,06</item>
+        <item>0,15</item>
+        <item>1,00</item>
+        <item>1,50</item>
+        <item>2,50</item>
+    </array>
+    <array name="Qn_array">
+        <item>3.5</item>
+        <item>2.5</item>
+        <item>1.5</item>
+        <item>1.0</item>
+    </array>
+    <array name="R_array">
+        <item>R25</item>
+        <item>R40</item>
+        <item>R50</item>
+        <item>R63</item>
+        <item>R80</item>
+        <item>R100</item>
+    </array>
+    <array name="ServiceType_array">
+        <item>ХВ</item>
+        <item>ГВ</item>
+    </array>
+    <array name="reports_to_choose">
+        <item>Довідка про непридатність</item>
+        <item>Помилка при вимірюванні</item>
+    </array>
+    <array name="reports_to_show">
+        <item>Успішно</item>
+        <item>Повірка перервана. Причина невідома</item>
+        <item>Помилка. Відсутня заявка</item>
+        <item>Відмова замовника</item>
+        <item>Брак. На заміну</item>
+        <item>Рішення оператора</item>
+        <item>Довідка про непридатність</item>
+        <item>Помилка при вимірюванні</item>
+        <item>Калібрування</item>
+    </array>
+    <array name="result_status">
+        <item>Не опрацьовано</item>
+        <item>Придатний</item>
+        <item>Не придатний</item>
+    </array>
+    <array name="support_items">
+        <item>Телефон сервісного центру</item>
+        <item>Контакти для відправлення обладнання на обслуговування</item>
+        <item>YouTube-канал з відео інструкціями</item>
+    </array>
+</resources>

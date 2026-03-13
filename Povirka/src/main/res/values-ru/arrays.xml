@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="Class_array">
+        <item>Класс А</item>
+        <item>Класс B</item>
+    </array>
+    <array name="MechanismType_array">
+        <item>Стрелочный</item>
+        <item>Барабанный</item>
+    </array>
+    <array name="Q3_array">
+        <item>4.0</item>
+        <item>2.5</item>
+        <item>1.6</item>
+        <item>1.0</item>
+    </array>
+    <array name="Q_array">
+        <item>Qn</item>
+        <item>Q3</item>
+    </array>
+    <array name="Q_calibration_array">
+        <item>0,01</item>
+        <item>0,03</item>
+        <item>0,06</item>
+        <item>0,15</item>
+        <item>1,00</item>
+        <item>1,50</item>
+        <item>2,50</item>
+    </array>
+    <array name="Qn_array">
+        <item>3.5</item>
+        <item>2.5</item>
+        <item>1.5</item>
+        <item>1.0</item>
+    </array>
+    <array name="R_array">
+        <item>R25</item>
+        <item>R40</item>
+        <item>R50</item>
+        <item>R63</item>
+        <item>R80</item>
+        <item>R100</item>
+    </array>
+    <array name="ServiceType_array">
+        <item>ХВ</item>
+        <item>ГВ</item>
+    </array>
+    <array name="reports_to_choose">
+        <item>Справка о непригодности</item>
+        <item>Ошибка измерения</item>
+    </array>
+    <array name="reports_to_show">
+        <item>Успешно</item>
+        <item>Поверка прервана. Причина неизвестна</item>
+        <item>Ошибка. Нет в заявке</item>
+        <item>Отказ заказчика</item>
+        <item>Брак. На замену</item>
+        <item>Решение оператора</item>
+        <item>Справка о непригодности</item>
+        <item>Ошибка измерения</item>
+        <item>Калибровка</item>
+    </array>
+    <array name="result_status">
+        <item>Не обработан</item>
+        <item>Годен</item>
+        <item>Не годен</item>
+    </array>
+    <array name="support_items">
+        <item>Телефон сервисного центра</item>
+        <item>Контакты для отправки оборудования на обслуживание</item>
+        <item>YouTube-канал с видео инструкциями</item>
+    </array>
+</resources>

@@ -1,0 +1,413 @@
+package org.apache.poi.sl.usermodel;
+
+import androidx.core.internal.view.SupportMenu;
+import androidx.core.view.InputDeviceCompat;
+import androidx.core.view.ViewCompat;
+import java.awt.Color;
+import java.util.HashMap;
+import java.util.Map;
+
+/* JADX WARN: Enum visitor error
+jadx.core.utils.exceptions.JadxRuntimeException: Init of enum field 'ActiveCaptionText' uses external variables
+	at jadx.core.dex.visitors.EnumVisitor.createEnumFieldByConstructor(EnumVisitor.java:451)
+	at jadx.core.dex.visitors.EnumVisitor.processEnumFieldByField(EnumVisitor.java:372)
+	at jadx.core.dex.visitors.EnumVisitor.processEnumFieldByWrappedInsn(EnumVisitor.java:337)
+	at jadx.core.dex.visitors.EnumVisitor.extractEnumFieldsFromFilledArray(EnumVisitor.java:322)
+	at jadx.core.dex.visitors.EnumVisitor.extractEnumFieldsFromInsn(EnumVisitor.java:262)
+	at jadx.core.dex.visitors.EnumVisitor.convertToEnum(EnumVisitor.java:151)
+	at jadx.core.dex.visitors.EnumVisitor.visit(EnumVisitor.java:100)
+ */
+/* JADX WARN: Failed to restore enum class, 'enum' modifier and super class removed */
+/* JADX INFO: loaded from: classes.dex */
+public final class PresetColor {
+    private static final /* synthetic */ PresetColor[] $VALUES;
+    public static final PresetColor ActiveBorder = new PresetColor("ActiveBorder", 0, -4934476, 1, "activeBorder");
+    public static final PresetColor ActiveCaption = new PresetColor("ActiveCaption", 1, -6703919, 2, "activeCaption");
+    public static final PresetColor ActiveCaptionText;
+    public static final PresetColor AliceBlue;
+    public static final PresetColor AntiqueWhite;
+    public static final PresetColor AppWorkspace;
+    public static final PresetColor Aqua;
+    public static final PresetColor Aquamarine;
+    public static final PresetColor Azure;
+    public static final PresetColor Beige;
+    public static final PresetColor Bisque;
+    public static final PresetColor Black;
+    public static final PresetColor BlanchedAlmond;
+    public static final PresetColor Blue;
+    public static final PresetColor BlueViolet;
+    public static final PresetColor Brown;
+    public static final PresetColor BurlyWood;
+    public static final PresetColor ButtonFace;
+    public static final PresetColor ButtonHighlight;
+    public static final PresetColor ButtonShadow;
+    public static final PresetColor CadetBlue;
+    public static final PresetColor Chartreuse;
+    public static final PresetColor Chocolate;
+    public static final PresetColor Control;
+    public static final PresetColor ControlDark;
+    public static final PresetColor ControlDarkDark;
+    public static final PresetColor ControlLight;
+    public static final PresetColor ControlLightLight;
+    public static final PresetColor ControlText;
+    public static final PresetColor Coral;
+    public static final PresetColor CornflowerBlue;
+    public static final PresetColor Cornsilk;
+    public static final PresetColor Crimson;
+    public static final PresetColor Cyan;
+    public static final PresetColor DarkBlue;
+    public static final PresetColor DarkCyan;
+    public static final PresetColor DarkGoldenrod;
+    public static final PresetColor DarkGray;
+    public static final PresetColor DarkGreen;
+    public static final PresetColor DarkKhaki;
+    public static final PresetColor DarkMagenta;
+    public static final PresetColor DarkOliveGreen;
+    public static final PresetColor DarkOrange;
+    public static final PresetColor DarkOrchid;
+    public static final PresetColor DarkRed;
+    public static final PresetColor DarkSalmon;
+    public static final PresetColor DarkSeaGreen;
+    public static final PresetColor DarkSlateBlue;
+    public static final PresetColor DarkSlateGray;
+    public static final PresetColor DarkTurquoise;
+    public static final PresetColor DarkViolet;
+    public static final PresetColor DeepPink;
+    public static final PresetColor DeepSkyBlue;
+    public static final PresetColor Desktop;
+    public static final PresetColor DimGray;
+    public static final PresetColor DodgerBlue;
+    public static final PresetColor Firebrick;
+    public static final PresetColor FloralWhite;
+    public static final PresetColor ForestGreen;
+    public static final PresetColor Fuchsia;
+    public static final PresetColor Gainsboro;
+    public static final PresetColor GhostWhite;
+    public static final PresetColor Gold;
+    public static final PresetColor Goldenrod;
+    public static final PresetColor GradientActiveCaption;
+    public static final PresetColor GradientInactiveCaption;
+    public static final PresetColor Gray;
+    public static final PresetColor GrayText;
+    public static final PresetColor Green;
+    public static final PresetColor GreenYellow;
+    public static final PresetColor Highlight;
+    public static final PresetColor HighlightText;
+    public static final PresetColor Honeydew;
+    public static final PresetColor HotPink;
+    public static final PresetColor HotTrack;
+    public static final PresetColor InactiveBorder;
+    public static final PresetColor InactiveCaption;
+    public static final PresetColor InactiveCaptionText;
+    public static final PresetColor IndianRed;
+    public static final PresetColor Indigo;
+    public static final PresetColor Info;
+    public static final PresetColor InfoText;
+    public static final PresetColor Ivory;
+    public static final PresetColor Khaki;
+    public static final PresetColor Lavender;
+    public static final PresetColor LavenderBlush;
+    public static final PresetColor LawnGreen;
+    public static final PresetColor LemonChiffon;
+    public static final PresetColor LightBlue;
+    public static final PresetColor LightCoral;
+    public static final PresetColor LightCyan;
+    public static final PresetColor LightGoldenrodYellow;
+    public static final PresetColor LightGray;
+    public static final PresetColor LightGreen;
+    public static final PresetColor LightPink;
+    public static final PresetColor LightSalmon;
+    public static final PresetColor LightSeaGreen;
+    public static final PresetColor LightSkyBlue;
+    public static final PresetColor LightSlateGray;
+    public static final PresetColor LightSteelBlue;
+    public static final PresetColor LightYellow;
+    public static final PresetColor Lime;
+    public static final PresetColor LimeGreen;
+    public static final PresetColor Linen;
+    public static final PresetColor Magenta;
+    public static final PresetColor Maroon;
+    public static final PresetColor MediumAquamarine;
+    public static final PresetColor MediumBlue;
+    public static final PresetColor MediumOrchid;
+    public static final PresetColor MediumPurple;
+    public static final PresetColor MediumSeaGreen;
+    public static final PresetColor MediumSlateBlue;
+    public static final PresetColor MediumSpringGreen;
+    public static final PresetColor MediumTurquoise;
+    public static final PresetColor MediumVioletRed;
+    public static final PresetColor Menu;
+    public static final PresetColor MenuBar;
+    public static final PresetColor MenuHighlight;
+    public static final PresetColor MenuText;
+    public static final PresetColor MidnightBlue;
+    public static final PresetColor MintCream;
+    public static final PresetColor MistyRose;
+    public static final PresetColor Moccasin;
+    public static final PresetColor NavajoWhite;
+    public static final PresetColor Navy;
+    public static final PresetColor OldLace;
+    public static final PresetColor Olive;
+    public static final PresetColor OliveDrab;
+    public static final PresetColor Orange;
+    public static final PresetColor OrangeRed;
+    public static final PresetColor Orchid;
+    public static final PresetColor PaleGoldenrod;
+    public static final PresetColor PaleGreen;
+    public static final PresetColor PaleTurquoise;
+    public static final PresetColor PaleVioletRed;
+    public static final PresetColor PapayaWhip;
+    public static final PresetColor PeachPuff;
+    public static final PresetColor Peru;
+    public static final PresetColor Pink;
+    public static final PresetColor Plum;
+    public static final PresetColor PowderBlue;
+    public static final PresetColor Purple;
+    public static final PresetColor Red;
+    public static final PresetColor RosyBrown;
+    public static final PresetColor RoyalBlue;
+    public static final PresetColor SaddleBrown;
+    public static final PresetColor Salmon;
+    public static final PresetColor SandyBrown;
+    public static final PresetColor ScrollBar;
+    public static final PresetColor SeaGreen;
+    public static final PresetColor SeaShell;
+    public static final PresetColor Sienna;
+    public static final PresetColor Silver;
+    public static final PresetColor SkyBlue;
+    public static final PresetColor SlateBlue;
+    public static final PresetColor SlateGray;
+    public static final PresetColor Snow;
+    public static final PresetColor SpringGreen;
+    public static final PresetColor SteelBlue;
+    public static final PresetColor Tan;
+    public static final PresetColor Teal;
+    public static final PresetColor Thistle;
+    public static final PresetColor Tomato;
+    public static final PresetColor Transparent;
+    public static final PresetColor Turquoise;
+    public static final PresetColor Violet;
+    public static final PresetColor Wheat;
+    public static final PresetColor White;
+    public static final PresetColor WhiteSmoke;
+    public static final PresetColor Window;
+    public static final PresetColor WindowFrame;
+    public static final PresetColor WindowText;
+    public static final PresetColor Yellow;
+    public static final PresetColor YellowGreen;
+    private static final Map<String, PresetColor> lookupOoxmlId;
+    public final Color color;
+    public final int nativeId;
+    public final String ooxmlId;
+
+    public static PresetColor valueOf(String name) {
+        return (PresetColor) Enum.valueOf(PresetColor.class, name);
+    }
+
+    public static PresetColor[] values() {
+        return (PresetColor[]) $VALUES.clone();
+    }
+
+    static {
+        Integer numValueOf = Integer.valueOf(ViewCompat.MEASURED_STATE_MASK);
+        ActiveCaptionText = new PresetColor("ActiveCaptionText", 2, numValueOf, 3, "captionText");
+        AppWorkspace = new PresetColor("AppWorkspace", 3, -5526613, 4, "appWorkspace");
+        Control = new PresetColor("Control", 4, -986896, 5, "btnFace");
+        ControlDark = new PresetColor("ControlDark", 5, -9868951, 6, "btnShadow");
+        ControlDarkDark = new PresetColor("ControlDarkDark", 6, numValueOf, 7, "3dDkShadow");
+        ControlLight = new PresetColor("ControlLight", 7, -1842205, 8, "btnHighlight");
+        ControlLightLight = new PresetColor("ControlLightLight", 8, -1842205, 9, "3dLight");
+        ControlText = new PresetColor("ControlText", 9, numValueOf, 10, "btnText");
+        Desktop = new PresetColor("Desktop", 10, numValueOf, 11, "background");
+        GrayText = new PresetColor("GrayText", 11, -9605779, 12, "grayText");
+        Highlight = new PresetColor("Highlight", 12, -13395457, 13, "highlight");
+        HighlightText = new PresetColor("HighlightText", 13, -1, 14, "highlightText");
+        HotTrack = new PresetColor("HotTrack", 14, -16750900, 15, "hotLight");
+        InactiveBorder = new PresetColor("InactiveBorder", 15, -722948, 16, "inactiveBorder");
+        InactiveCaption = new PresetColor("InactiveCaption", 16, -4207141, 17, "inactiveCaption");
+        InactiveCaptionText = new PresetColor("InactiveCaptionText", 17, numValueOf, 18, "inactiveCaptionText");
+        Info = new PresetColor("Info", 18, -31, 19, "infoBk");
+        InfoText = new PresetColor("InfoText", 19, numValueOf, 20, "infoText");
+        Menu = new PresetColor("Menu", 20, -986896, 21, "menu");
+        MenuText = new PresetColor("MenuText", 21, numValueOf, 22, "menuText");
+        ScrollBar = new PresetColor("ScrollBar", 22, -3618616, 23, "scrollBar");
+        Window = new PresetColor("Window", 23, -1, 24, "window");
+        WindowFrame = new PresetColor("WindowFrame", 24, -10197916, 25, "windowFrame");
+        WindowText = new PresetColor("WindowText", 25, numValueOf, 26, "windowText");
+        Transparent = new PresetColor("Transparent", 26, Integer.valueOf(ViewCompat.MEASURED_SIZE_MASK), 27, null);
+        AliceBlue = new PresetColor("AliceBlue", 27, -984833, 28, "aliceBlue");
+        AntiqueWhite = new PresetColor("AntiqueWhite", 28, -332841, 29, "antiqueWhite");
+        Aqua = new PresetColor("Aqua", 29, -16711681, 30, "aqua");
+        Aquamarine = new PresetColor("Aquamarine", 30, -8388652, 31, "aquamarine");
+        Azure = new PresetColor("Azure", 31, -983041, 32, "azure");
+        Beige = new PresetColor("Beige", 32, -657956, 33, "beige");
+        Bisque = new PresetColor("Bisque", 33, -6972, 34, "bisque");
+        Black = new PresetColor("Black", 34, numValueOf, 35, "black");
+        BlanchedAlmond = new PresetColor("BlanchedAlmond", 35, -5171, 36, "blanchedAlmond");
+        Blue = new PresetColor("Blue", 36, -16776961, 37, "blue");
+        BlueViolet = new PresetColor("BlueViolet", 37, -7722014, 38, "blueViolet");
+        Brown = new PresetColor("Brown", 38, -5952982, 39, "brown");
+        BurlyWood = new PresetColor("BurlyWood", 39, -2180985, 40, "burlyWood");
+        CadetBlue = new PresetColor("CadetBlue", 40, -10510688, 41, "cadetBlue");
+        Chartreuse = new PresetColor("Chartreuse", 41, -8388864, 42, "chartreuse");
+        Chocolate = new PresetColor("Chocolate", 42, -2987746, 43, "chocolate");
+        Coral = new PresetColor("Coral", 43, -32944, 44, "coral");
+        CornflowerBlue = new PresetColor("CornflowerBlue", 44, -10185235, 45, "cornflowerBlue");
+        Cornsilk = new PresetColor("Cornsilk", 45, -1828, 46, "cornsilk");
+        Crimson = new PresetColor("Crimson", 46, -2354116, 47, "crimson");
+        Cyan = new PresetColor("Cyan", 47, -16711681, 48, "cyan");
+        DarkBlue = new PresetColor("DarkBlue", 48, -16777077, 49, "dkBlue");
+        DarkCyan = new PresetColor("DarkCyan", 49, -16741493, 50, "dkCyan");
+        DarkGoldenrod = new PresetColor("DarkGoldenrod", 50, -4684277, 51, "dkGoldenrod");
+        DarkGray = new PresetColor("DarkGray", 51, -5658199, 52, "dkGray");
+        DarkGreen = new PresetColor("DarkGreen", 52, -16751616, 53, "dkGreen");
+        DarkKhaki = new PresetColor("DarkKhaki", 53, -4343957, 54, "dkKhaki");
+        DarkMagenta = new PresetColor("DarkMagenta", 54, -7667573, 55, "dkMagenta");
+        DarkOliveGreen = new PresetColor("DarkOliveGreen", 55, -11179217, 56, "dkOliveGreen");
+        DarkOrange = new PresetColor("DarkOrange", 56, -29696, 57, "dkOrange");
+        DarkOrchid = new PresetColor("DarkOrchid", 57, -6737204, 58, "dkOrchid");
+        DarkRed = new PresetColor("DarkRed", 58, -7667712, 59, "dkRed");
+        DarkSalmon = new PresetColor("DarkSalmon", 59, -1468806, 60, "dkSalmon");
+        DarkSeaGreen = new PresetColor("DarkSeaGreen", 60, -7357301, 61, "dkSeaGreen");
+        DarkSlateBlue = new PresetColor("DarkSlateBlue", 61, -12042869, 62, "dkSlateBlue");
+        DarkSlateGray = new PresetColor("DarkSlateGray", 62, -13676721, 63, "dkSlateGray");
+        DarkTurquoise = new PresetColor("DarkTurquoise", 63, -16724271, 64, "dkTurquoise");
+        DarkViolet = new PresetColor("DarkViolet", 64, -7077677, 65, "dkViolet");
+        DeepPink = new PresetColor("DeepPink", 65, -60269, 66, "deepPink");
+        DeepSkyBlue = new PresetColor("DeepSkyBlue", 66, -16728065, 67, "deepSkyBlue");
+        DimGray = new PresetColor("DimGray", 67, -9868951, 68, "dimGray");
+        DodgerBlue = new PresetColor("DodgerBlue", 68, -14774017, 69, "dodgerBlue");
+        Firebrick = new PresetColor("Firebrick", 69, -5103070, 70, "firebrick");
+        FloralWhite = new PresetColor("FloralWhite", 70, -1296, 71, "floralWhite");
+        ForestGreen = new PresetColor("ForestGreen", 71, -14513374, 72, "forestGreen");
+        Fuchsia = new PresetColor("Fuchsia", 72, -65281, 73, "fuchsia");
+        Gainsboro = new PresetColor("Gainsboro", 73, -2302756, 74, "gainsboro");
+        GhostWhite = new PresetColor("GhostWhite", 74, -460545, 75, "ghostWhite");
+        Gold = new PresetColor("Gold", 75, -10496, 76, "gold");
+        Goldenrod = new PresetColor("Goldenrod", 76, -2448096, 77, "goldenrod");
+        Gray = new PresetColor("Gray", 77, -8355712, 78, "gray");
+        Green = new PresetColor("Green", 78, -16744448, 79, "green");
+        GreenYellow = new PresetColor("GreenYellow", 79, -5374161, 80, "greenYellow");
+        Honeydew = new PresetColor("Honeydew", 80, -983056, 81, "honeydew");
+        HotPink = new PresetColor("HotPink", 81, -38476, 82, "hotPink");
+        IndianRed = new PresetColor("IndianRed", 82, -3318692, 83, "indianRed");
+        Indigo = new PresetColor("Indigo", 83, -11861886, 84, "indigo");
+        Ivory = new PresetColor("Ivory", 84, -16, 85, "ivory");
+        Khaki = new PresetColor("Khaki", 85, -989556, 86, "khaki");
+        Lavender = new PresetColor("Lavender", 86, -1644806, 87, "lavender");
+        LavenderBlush = new PresetColor("LavenderBlush", 87, -3851, 88, "lavenderBlush");
+        LawnGreen = new PresetColor("LawnGreen", 88, -8586240, 89, "lawnGreen");
+        LemonChiffon = new PresetColor("LemonChiffon", 89, -1331, 90, "lemonChiffon");
+        LightBlue = new PresetColor("LightBlue", 90, -5383962, 91, "ltBlue");
+        LightCoral = new PresetColor("LightCoral", 91, -1015680, 92, "ltCoral");
+        LightCyan = new PresetColor("LightCyan", 92, -2031617, 93, "ltCyan");
+        LightGoldenrodYellow = new PresetColor("LightGoldenrodYellow", 93, -329096, 94, "ltGoldenrodYellow");
+        LightGray = new PresetColor("LightGray", 94, -2894893, 95, "ltGray");
+        LightGreen = new PresetColor("LightGreen", 95, -7278960, 96, "ltGreen");
+        LightPink = new PresetColor("LightPink", 96, -18751, 97, "ltPink");
+        LightSalmon = new PresetColor("LightSalmon", 97, -24454, 98, "ltSalmon");
+        LightSeaGreen = new PresetColor("LightSeaGreen", 98, -14634326, 99, "ltSeaGreen");
+        LightSkyBlue = new PresetColor("LightSkyBlue", 99, -7876870, 100, "ltSkyBlue");
+        LightSlateGray = new PresetColor("LightSlateGray", 100, -8943463, 101, "ltSlateGray");
+        LightSteelBlue = new PresetColor("LightSteelBlue", 101, -5192482, 102, "ltSteelBlue");
+        LightYellow = new PresetColor("LightYellow", 102, -32, 103, "ltYellow");
+        Lime = new PresetColor("Lime", 103, -16711936, 104, "lime");
+        LimeGreen = new PresetColor("LimeGreen", 104, -13447886, 105, "limeGreen");
+        Linen = new PresetColor("Linen", 105, -331546, 106, "linen");
+        Magenta = new PresetColor("Magenta", 106, -65281, 107, "magenta");
+        Maroon = new PresetColor("Maroon", 107, -8388608, 108, "maroon");
+        MediumAquamarine = new PresetColor("MediumAquamarine", 108, -10039894, 109, "medAquamarine");
+        MediumBlue = new PresetColor("MediumBlue", 109, -16777011, 110, "medBlue");
+        MediumOrchid = new PresetColor("MediumOrchid", 110, -4565549, 111, "medOrchid");
+        MediumPurple = new PresetColor("MediumPurple", 111, -7114533, 112, "medPurple");
+        MediumSeaGreen = new PresetColor("MediumSeaGreen", 112, -12799119, 113, "medSeaGreen");
+        MediumSlateBlue = new PresetColor("MediumSlateBlue", 113, -8689426, 114, "medSlateBlue");
+        MediumSpringGreen = new PresetColor("MediumSpringGreen", 114, -16713062, 115, "medSpringGreen");
+        MediumTurquoise = new PresetColor("MediumTurquoise", 115, -12004916, 116, "medTurquoise");
+        MediumVioletRed = new PresetColor("MediumVioletRed", 116, -3730043, 117, "medVioletRed");
+        MidnightBlue = new PresetColor("MidnightBlue", 117, -15132304, 118, "midnightBlue");
+        MintCream = new PresetColor("MintCream", 118, -655366, 119, "mintCream");
+        MistyRose = new PresetColor("MistyRose", 119, -6943, 120, "mistyRose");
+        Moccasin = new PresetColor("Moccasin", 120, -6987, 121, "moccasin");
+        NavajoWhite = new PresetColor("NavajoWhite", 121, -8531, 122, "navajoWhite");
+        Navy = new PresetColor("Navy", 122, -16777088, 123, "navy");
+        OldLace = new PresetColor("OldLace", 123, -133658, 124, "oldLace");
+        Olive = new PresetColor("Olive", 124, -8355840, 125, "olive");
+        OliveDrab = new PresetColor("OliveDrab", 125, -9728477, 126, "oliveDrab");
+        Orange = new PresetColor("Orange", 126, -23296, 127, "orange");
+        OrangeRed = new PresetColor("OrangeRed", 127, -47872, 128, "orangeRed");
+        Orchid = new PresetColor("Orchid", 128, -2461482, 129, "orchid");
+        PaleGoldenrod = new PresetColor("PaleGoldenrod", 129, -1120086, 130, "paleGoldenrod");
+        PaleGreen = new PresetColor("PaleGreen", 130, -6751336, 131, "paleGreen");
+        PaleTurquoise = new PresetColor("PaleTurquoise", 131, -5247250, 132, "paleTurquoise");
+        PaleVioletRed = new PresetColor("PaleVioletRed", 132, -2396013, 133, "paleVioletRed");
+        PapayaWhip = new PresetColor("PapayaWhip", 133, -4139, 134, "papayaWhip");
+        PeachPuff = new PresetColor("PeachPuff", 134, -9543, 135, "peachPuff");
+        Peru = new PresetColor("Peru", 135, -3308225, 136, "peru");
+        Pink = new PresetColor("Pink", 136, -16181, 137, "pink");
+        Plum = new PresetColor("Plum", 137, -2252579, 138, "plum");
+        PowderBlue = new PresetColor("PowderBlue", 138, -5185306, 139, "powderBlue");
+        Purple = new PresetColor("Purple", 139, -8388480, 140, "purple");
+        Red = new PresetColor("Red", 140, Integer.valueOf(SupportMenu.CATEGORY_MASK), 141, "red");
+        RosyBrown = new PresetColor("RosyBrown", 141, -4419697, 142, "rosyBrown");
+        RoyalBlue = new PresetColor("RoyalBlue", 142, -12490271, 143, "royalBlue");
+        SaddleBrown = new PresetColor("SaddleBrown", 143, -7650029, 144, "saddleBrown");
+        Salmon = new PresetColor("Salmon", 144, -360334, 145, "salmon");
+        SandyBrown = new PresetColor("SandyBrown", 145, -744352, 146, "sandyBrown");
+        SeaGreen = new PresetColor("SeaGreen", 146, -13726889, 147, "seaGreen");
+        SeaShell = new PresetColor("SeaShell", 147, -2578, 148, "seaShell");
+        Sienna = new PresetColor("Sienna", 148, -6270419, 149, "sienna");
+        Silver = new PresetColor("Silver", 149, -4144960, 150, "silver");
+        SkyBlue = new PresetColor("SkyBlue", 150, -7876885, 151, "skyBlue");
+        SlateBlue = new PresetColor("SlateBlue", 151, -9807155, 152, "slateBlue");
+        SlateGray = new PresetColor("SlateGray", 152, -9404272, 153, "slateGray");
+        Snow = new PresetColor("Snow", 153, -1286, 154, "snow");
+        SpringGreen = new PresetColor("SpringGreen", 154, -16711809, 155, "springGreen");
+        SteelBlue = new PresetColor("SteelBlue", 155, -12156236, 156, "steelBlue");
+        Tan = new PresetColor("Tan", 156, -2968436, 157, "tan");
+        Teal = new PresetColor("Teal", 157, -16744320, 158, "teal");
+        Thistle = new PresetColor("Thistle", 158, -2572328, 159, "thistle");
+        Tomato = new PresetColor("Tomato", 159, -40121, 160, "tomato");
+        Turquoise = new PresetColor("Turquoise", 160, -12525360, 161, "turquoise");
+        Violet = new PresetColor("Violet", 161, -1146130, 162, "violet");
+        Wheat = new PresetColor("Wheat", 162, -663885, 163, "wheat");
+        White = new PresetColor("White", 163, -1, 164, "white");
+        WhiteSmoke = new PresetColor("WhiteSmoke", 164, -657931, 165, "whiteSmoke");
+        Yellow = new PresetColor("Yellow", 165, Integer.valueOf(InputDeviceCompat.SOURCE_ANY), 166, "yellow");
+        YellowGreen = new PresetColor("YellowGreen", 166, -6632142, 167, "yellowGreen");
+        ButtonFace = new PresetColor("ButtonFace", 167, -986896, 168, null);
+        ButtonHighlight = new PresetColor("ButtonHighlight", 168, -1, 169, null);
+        ButtonShadow = new PresetColor("ButtonShadow", 169, -6250336, 170, null);
+        GradientActiveCaption = new PresetColor("GradientActiveCaption", 170, -4599318, 171, "gradientActiveCaption");
+        GradientInactiveCaption = new PresetColor("GradientInactiveCaption", 171, -2628366, 172, "gradientInactiveCaption");
+        MenuBar = new PresetColor("MenuBar", 172, -986896, 173, "menuBar");
+        MenuHighlight = new PresetColor("MenuHighlight", 173, -13395457, 174, "menuHighlight");
+        $VALUES = new PresetColor[]{ActiveBorder, ActiveCaption, ActiveCaptionText, AppWorkspace, Control, ControlDark, ControlDarkDark, ControlLight, ControlLightLight, ControlText, Desktop, GrayText, Highlight, HighlightText, HotTrack, InactiveBorder, InactiveCaption, InactiveCaptionText, Info, InfoText, Menu, MenuText, ScrollBar, Window, WindowFrame, WindowText, Transparent, AliceBlue, AntiqueWhite, Aqua, Aquamarine, Azure, Beige, Bisque, Black, BlanchedAlmond, Blue, BlueViolet, Brown, BurlyWood, CadetBlue, Chartreuse, Chocolate, Coral, CornflowerBlue, Cornsilk, Crimson, Cyan, DarkBlue, DarkCyan, DarkGoldenrod, DarkGray, DarkGreen, DarkKhaki, DarkMagenta, DarkOliveGreen, DarkOrange, DarkOrchid, DarkRed, DarkSalmon, DarkSeaGreen, DarkSlateBlue, DarkSlateGray, DarkTurquoise, DarkViolet, DeepPink, DeepSkyBlue, DimGray, DodgerBlue, Firebrick, FloralWhite, ForestGreen, Fuchsia, Gainsboro, GhostWhite, Gold, Goldenrod, Gray, Green, GreenYellow, Honeydew, HotPink, IndianRed, Indigo, Ivory, Khaki, Lavender, LavenderBlush, LawnGreen, LemonChiffon, LightBlue, LightCoral, LightCyan, LightGoldenrodYellow, LightGray, LightGreen, LightPink, LightSalmon, LightSeaGreen, LightSkyBlue, LightSlateGray, LightSteelBlue, LightYellow, Lime, LimeGreen, Linen, Magenta, Maroon, MediumAquamarine, MediumBlue, MediumOrchid, MediumPurple, MediumSeaGreen, MediumSlateBlue, MediumSpringGreen, MediumTurquoise, MediumVioletRed, MidnightBlue, MintCream, MistyRose, Moccasin, NavajoWhite, Navy, OldLace, Olive, OliveDrab, Orange, OrangeRed, Orchid, PaleGoldenrod, PaleGreen, PaleTurquoise, PaleVioletRed, PapayaWhip, PeachPuff, Peru, Pink, Plum, PowderBlue, Purple, Red, RosyBrown, RoyalBlue, SaddleBrown, Salmon, SandyBrown, SeaGreen, SeaShell, Sienna, Silver, SkyBlue, SlateBlue, SlateGray, Snow, SpringGreen, SteelBlue, Tan, Teal, Thistle, Tomato, Turquoise, Violet, Wheat, White, WhiteSmoke, Yellow, YellowGreen, ButtonFace, ButtonHighlight, ButtonShadow, GradientActiveCaption, GradientInactiveCaption, MenuBar, MenuHighlight};
+        lookupOoxmlId = new HashMap();
+        PresetColor[] arr$ = values();
+        for (PresetColor pc : arr$) {
+            String str = pc.ooxmlId;
+            if (str != null) {
+                lookupOoxmlId.put(str, pc);
+            }
+        }
+    }
+
+    private PresetColor(String str, int i, Integer rgb, int nativeId, String ooxmlId) {
+        this.color = rgb == null ? null : new Color(rgb.intValue(), true);
+        this.nativeId = nativeId;
+        this.ooxmlId = ooxmlId;
+    }
+
+    public static PresetColor valueOfOoxmlId(String ooxmlId) {
+        return lookupOoxmlId.get(ooxmlId);
+    }
+
+    public static PresetColor valueOfNativeId(int nativeId) {
+        PresetColor[] vals = values();
+        if (nativeId <= 0 || nativeId > vals.length) {
+            return null;
+        }
+        return vals[nativeId - 1];
+    }
+}

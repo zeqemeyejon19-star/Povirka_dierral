@@ -1,0 +1,56 @@
+package com.google.zxing.datamatrix.decoder;
+
+import com.google.zxing.ChecksumException;
+import com.google.zxing.FormatException;
+import com.google.zxing.common.BitMatrix;
+import com.google.zxing.common.DecoderResult;
+import com.google.zxing.common.reedsolomon.GenericGF;
+import com.google.zxing.common.reedsolomon.ReedSolomonDecoder;
+import com.google.zxing.common.reedsolomon.ReedSolomonException;
+
+/* JADX INFO: loaded from: classes.dex */
+public final class Decoder {
+    private final ReedSolomonDecoder rsDecoder = new ReedSolomonDecoder(GenericGF.DATA_MATRIX_FIELD_256);
+
+    public DecoderResult decode(boolean[][] image) throws ChecksumException, FormatException {
+        return decode(BitMatrix.parse(image));
+    }
+
+    public DecoderResult decode(BitMatrix bits) throws ChecksumException, FormatException {
+        BitMatrixParser parser = new BitMatrixParser(bits);
+        Version version = parser.getVersion();
+        DataBlock[] dataBlocks = DataBlock.getDataBlocks(parser.readCodewords(), version);
+        int totalBytes = 0;
+        for (DataBlock db : dataBlocks) {
+            totalBytes += db.getNumDataCodewords();
+        }
+        byte[] resultBytes = new byte[totalBytes];
+        int dataBlocksCount = dataBlocks.length;
+        for (int j = 0; j < dataBlocksCount; j++) {
+            DataBlock dataBlock = dataBlocks[j];
+            byte[] codewordBytes = dataBlock.getCodewords();
+            int numDataCodewords = dataBlock.getNumDataCodewords();
+            correctErrors(codewordBytes, numDataCodewords);
+            for (int i = 0; i < numDataCodewords; i++) {
+                resultBytes[(i * dataBlocksCount) + j] = codewordBytes[i];
+            }
+        }
+        return DecodedBitStreamParser.decode(resultBytes);
+    }
+
+    private void correctErrors(byte[] bArr, int i) throws ChecksumException {
+        int length = bArr.length;
+        int[] iArr = new int[length];
+        for (int i2 = 0; i2 < length; i2++) {
+            iArr[i2] = bArr[i2] & 255;
+        }
+        try {
+            this.rsDecoder.decode(iArr, bArr.length - i);
+            for (int i3 = 0; i3 < i; i3++) {
+                bArr[i3] = (byte) iArr[i3];
+            }
+        } catch (ReedSolomonException e) {
+            throw ChecksumException.getChecksumInstance();
+        }
+    }
+}
